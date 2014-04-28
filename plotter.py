@@ -37,6 +37,8 @@ class Plotter:
       colors.pop(0)
 
     plt.axis([0, xMax, 0, yMax])
+    plt.xlabel('time (seconds)')
+    plt.ylabel('distance (meters)')
     plt.show()
 
 
