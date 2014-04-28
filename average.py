@@ -43,7 +43,7 @@ def averageList(l1):
 def weightedAverageList(l1,weights):
 	weighted = []
 	for i in range(len(l1)):
-		weighted.append(l1[i] * weights[i])
+		weighted.append(float(l1[i]) * weights[i])
 	return float(sum(weighted))/sum(weights)
 
 #Given two lists of tuples of the form (time, distance),
