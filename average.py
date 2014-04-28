@@ -1,3 +1,5 @@
+from plotter import Plotter
+
 #Given an individual tuple of the form (time,distance) and a start,end value,
 #Returns that tuple normalized WRT time
 def normalize_point(tuple,start,end):
@@ -33,6 +35,17 @@ def simulated(before,after,time):
 	sim = before[1] + float(time - before[0])/float(after[0] - before[0]) * (after[1] - before[1])
 	return sim
 
+#averages a list of points
+def averageList(l1):
+	return float(sum(l1))/len(l1)
+
+#weighted average of list of points
+def weightedAverageList(l1,weights):
+	weighted = []
+	for i in range(len(l1)):
+		weighted.append(l1[i] * weights[i])
+	return float(sum(weighted))/sum(weights)
+
 #Given two lists of tuples of the form (time, distance),
 #Returns the 'average' line between them at a given sample rate
 def average2(l1,l2,step):
@@ -52,17 +65,6 @@ def average2(l1,l2,step):
 		#now averages these two simulated values 
 		result.append((i,(sim1 + sim2)/2))
 	return result
-
-#averages a list of points
-def averageList(l1):
-	return float(sum(l1))/len(l1)
-
-#weighted average of list of points
-def weightedAverageList(l1,weights):
-	weighted = []
-	for i in range(len(l1)):
-		weighted.append(l1[i] * weights[i])
-	return float(sum(weighted))/sum(weights)
 
 #Given a list of lists of tuples of the form (time,distance),
 #Returns the 'average' line between them at a given sample rate
@@ -90,4 +92,9 @@ def averageN(lists,step,weights=[]):
 		#now averages these two simulated values 
 		result.append((i,weightedAverageList(simulatedResults,weights)))
 	
+	#graphs
+	plotter = Plotter()
+	plotter.createGraph(normalized + [result])
+
 	return result
+
