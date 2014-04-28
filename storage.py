@@ -19,7 +19,7 @@ class Storage:
           print "empty reader"
           time.sleep(100)
         for row in csvReader:
-          returnPoints.append(row)
+          returnPoints.append(map(int, row))
 
         return returnPoints
     except IOError:
@@ -34,8 +34,11 @@ class Storage:
         csvWriter.writerow(row)
 
 
+# example usage
+"""
 storage = Storage()
 print storage.readRun('test1.csv')
+"""
 
 
 
