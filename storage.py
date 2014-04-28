@@ -8,6 +8,7 @@ class Storage:
   def __init__(self):
     self.hello = []
 
+  # given a file name of a csv will read it and return that data when Storage.readRun() is called
   def readRun(self, inputFile):
     try:
       with open(inputFile, "rU") as csvFile:
@@ -25,6 +26,7 @@ class Storage:
       print "IOERROR is raised. Error opening file %s with logger.py" % (str(inputFile)) 
 
 
+  # given a list of lists to save and a file name will save csv of lists to name
   def saveRun(self, outputData, outputFile):
     with open(outputFile, 'w+') as writeFile:
       csvWriter = csv.writer(writeFile)
