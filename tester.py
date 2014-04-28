@@ -8,7 +8,7 @@ class Tester:
     self.hello = []
 
 
-  def createRun(self, T=600, startSpeed=7):
+  def createRun(self, T=600, startSpeed=10):
     returnArray = []
     distance = 0.0
     lastChange = 1.0
@@ -61,7 +61,7 @@ plotter = Plotter()
 distance = run[len(run) - 1]
 
 storage = Storage()
-storage.saveRun(distance, enumeratedRun, "wow2.csv")
+storage.saveRun(distance, enumeratedRun, "fast10minute5.csv")
 
 
 

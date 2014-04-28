@@ -46,7 +46,7 @@ class Plotter:
 # example usage
 """
 plotter = Plotter()
-plotter.graphRun([[1,2],[3,4],[4,3],[2,1]])
+plotter.createRun([ [[x_0,y_0],...,[x_n,y_n]], [[x_0,y_0],....,[x_n,y_n]], [x_0,y_0],....,[x_n,y_n]]])
 """
 
 
