@@ -39,9 +39,6 @@ def average2(l1,l2,step):
 	norm1 = normalize(l1)
 	norm2 = normalize(l2)
 
-	print "Norm1", norm1
-	print "Norm2", norm2
-
 	result = []
 
 	for i in [float(x)/step for x in range(0,int(step))]:
@@ -56,3 +53,41 @@ def average2(l1,l2,step):
 		result.append((i,(sim1 + sim2)/2))
 	return result
 
+#averages a list of points
+def averageList(l1):
+	return float(sum(l1))/len(l1)
+
+#weighted average of list of points
+def weightedAverageList(l1,weights):
+	weighted = []
+	for i in range(len(l1)):
+		weighted.append(l1[i] * weights[i])
+	return float(sum(weighted))/sum(weights)
+
+#Given a list of lists of tuples of the form (time,distance),
+#Returns the 'average' line between them at a given sample rate
+#Using a weighting based on distance
+def averageN(lists,step,weights=[]):
+	if weights == []:
+		weights = [1 for i in range(len(lists))]		
+	normalized = []
+	for current in lists:
+		normalized.append(normalize(current))	
+
+	result = []
+
+	for i in [float(x)/step for x in range(0,int(step))]:	
+		#calculates before/after now
+		beforeAfter = []
+		for current in normalized:
+			beforeAfter.append(before_after(current,i))
+		
+		#creates the simulated values based on a line between before and after
+		simulatedResults = []
+		for (before,after) in beforeAfter:
+			simulatedResults.append(simulated(before,after,i))
+
+		#now averages these two simulated values 
+		result.append((i,weightedAverageList(simulatedResults,weights)))
+	
+	return result
