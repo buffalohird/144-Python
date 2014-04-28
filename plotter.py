@@ -24,6 +24,7 @@ class Plotter:
   def createGraph(self, runs):
     xMax = 0
     yMax = 0
+    colors = ['ro', 'bo', 'yo']
 
     for run in runs:
       xList, yList = zip(*run)
@@ -32,7 +33,8 @@ class Plotter:
       xMax = max(xMax, max(xList) * 1.5)
       yMax = max(yMax, max(yList) * 1.5)
 
-      plt.plot(xList, yList, 'ro')
+      plt.plot(xList, yList, colors[0])
+      colors.pop(0)
 
     plt.axis([0, xMax, 0, yMax])
     plt.show()
