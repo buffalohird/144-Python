@@ -6,7 +6,10 @@ import csv
 
 class Storage:
   def __init__(self):
-    self.runFiles = ['wow.csv', 'wow1.csv', 'wow2.csv']
+    self.runFiles = ["10minute1.csv","10minute5.csv","5minute4.csv",  "fast10minute3.csv", "10minute2.csv","5minute1.csv","5minute5.csv","fast10minute4.csv","10minute3.csv","5minute2.csv","fast10minute1.csv","fast10minute5.csv","10minute4.csv","5minute3.csv","fast10minute2.csv","test1.csv"]
+
+  def setRuns(self, runs):
+    self.runFiles = runs
 
   # given a file name of a csv will read it and return that data when Storage.readRun() is called
   def readRun(self, inputFile):
@@ -19,7 +22,7 @@ class Storage:
           print "empty reader"
           time.sleep(100)
         for row in csvReader:
-          returnPoints.append(map(int, row))
+          returnPoints.append(map(float, row))
 
         return returnPoints
     except IOError:
@@ -54,15 +57,18 @@ class Storage:
     for runString in self.runFiles:
       closestRunsList.append([self.readRunDistance(runString), runString])
 
-    print closestRunsList
-    print distance
+    #print closestRunsList
+    #print distance
     closestRunsList = sorted(closestRunsList, key=lambda x: abs(x[0]-distance))
 
-    print closestRunsList
+    #print closestRunsList
 
     if n > len(closestRunsList):
       print "error trying to return %d closest graphs" % (n)
-    return closestRunsList[0:n-1]
+    if n == 1:
+      return closestRunsList[0:1]
+    else:
+      return closestRunsList[0:n-1]
 
 
 
