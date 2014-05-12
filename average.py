@@ -4,7 +4,7 @@ from plotter import Plotter
 #Returns that tuple normalized WRT time
 def normalize_point(tuple,start,end):
 	if start==end:
-		return tuple
+		return tuple	
 	return (float(tuple[0] - start) / float(end - start),tuple[1])
 
 #Given a list of tuples of the form (time,distance),
@@ -93,8 +93,10 @@ def averageN(lists,step,weights=[]):
 		result.append((i,weightedAverageList(simulatedResults,weights)))
 	
 	#graphs
-	plotter = Plotter()
-	plotter.createGraph(normalized + [result])
+	#plotter = Plotter()
+	#plotter.createGraph(lists)
+	#plotter.createGraph(normalized)
+	#plotter.createGraph(normalized + [result])
 
 	return result
 

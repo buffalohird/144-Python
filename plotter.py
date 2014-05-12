@@ -22,12 +22,12 @@ class Plotter:
   """
 
 
-  # given a list of runs (x,y lists of distance and time) plots each on the graph
-  # in a separate color
-  def createGraph(self, runs):
+  def createGraph(self, runs,colors=[]):
     xMax = 0
     yMax = 0
-    colors = ['ro', 'bo', 'yo']
+    if colors == []:
+      colors = ['r', 'b', 'y','c','go']
+      #colors = ['r', 'b', 'g', 'y','c', 'm','k','w','go']
 
     for run in runs:
       xList, yList = zip(*run)
@@ -36,6 +36,7 @@ class Plotter:
       xMax = max(xMax, max(xList) * 1.5)
       yMax = max(yMax, max(yList) * 1.5)
 
+      
       plt.plot(xList, yList, colors[0])
       colors.pop(0)
 
