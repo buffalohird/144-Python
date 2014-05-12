@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 
 
+# simple implementation of matplotlib graphing library
 class Plotter:
   def __init__(self):
     self.hello = []
@@ -21,6 +22,8 @@ class Plotter:
   """
 
 
+  # given a list of runs (x,y lists of distance and time) plots each on the graph
+  # in a separate color
   def createGraph(self, runs):
     xMax = 0
     yMax = 0

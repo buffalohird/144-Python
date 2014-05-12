@@ -3,11 +3,14 @@ from plotter import Plotter
 from storage import Storage
 import random
 
+# test data generating class - produces sample runs
 class Tester:
   def __init__(self):
     self.hello = []
 
 
+  # creates a run for a given time interval and starting speed using probabilistic speed changes over the course
+  # of this time period
   def createRun(self, T=600, startSpeed=10):
     returnArray = []
     distance = 0.0
@@ -20,6 +23,8 @@ class Tester:
 
     return returnArray
 
+  # probabilistic function to alter the speed of a runner over each time interval of an activity
+  # we emperically determined these values based on reasonable analysis of real run data
   def alterSpeed(self, speed, lastChange):
 
     modifier = random.random() # between 0.0 and 1.0
@@ -52,7 +57,8 @@ class Tester:
       return [speed * 1.05, 1.05]
 
 
-
+# sample usage of this, displaying a run being created, plotted, and saved
+"""
 tester = Tester()
 run = tester.createRun()
 enumeratedRun = enumerate(run)
@@ -62,7 +68,7 @@ distance = run[len(run) - 1]
 
 storage = Storage()
 storage.saveRun(distance, enumeratedRun, "fast10minute5.csv")
-
+"""
 
 
 

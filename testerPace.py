@@ -3,11 +3,16 @@ from plotter import Plotter
 from storage import Storage
 import random
 
+
+# test data generating class - produces sample pace data for runs
+# we note that pace is beyond the scope of our project, though we demonstrate
+# it here
 class Tester:
   def __init__(self):
     self.hello = []
 
-
+  # creates a sample run for a given time interval and starting pace using probabilistic pace changes over the course
+  # of this time period
   def createRun(self, T=60, startSpeed=1.33):
     returnArray = []
     distance = 0.0
@@ -20,6 +25,8 @@ class Tester:
 
     return returnArray
 
+  # probabilistic function to alter the speed of a runner over each time interval of an activity
+  # we emperically determined these values based on reasonable analysis of real run data
   def alterSpeed(self, speed, lastChange):
 
     modifier = random.random() # between 0.0 and 1.0
